@@ -27,6 +27,23 @@ getAllBtn.addEventListener('click', () => {
   })
 })
 
+for (let i = 0; i < charBtns.length; i = i + 1) {
+  charBtns[i].addEventListener('click',(event) => {
+
+    let name = event.target.id
+
+    axios.get(`${baseURL}/character/${name}`)
+    .then((response) => {
+      clearCharacters()
+        createCharacterCard(response.data)
+      
+    })
+    .catch(() => {
+  
+    })
+  })
+}
+
 ageForm.addEventListener('submit', (event) => {
   event.preventDefault()
 
